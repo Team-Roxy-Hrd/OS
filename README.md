@@ -19,7 +19,7 @@ A desktop file manager built using C and the GTK+ library for Linux systems. Thi
 - Change file permissions
 - Create symbolic links
 - View file details (size, permissions, type)
-
+- Manual Text 
 ### 🛠️ Technologies
 
 - **Language**: C

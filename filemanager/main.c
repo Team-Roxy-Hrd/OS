@@ -135,6 +135,47 @@ void on_delete_clicked(GtkButton *button, gpointer user_data) {
     }
 }
 
+void on_manual_close_clicked(GtkButton *button, gpointer window) {
+    gtk_widget_destroy(GTK_WIDGET(window));
+}
+
+void on_man_clicked(GtkButton *button, gpointer user_data) {
+    GtkWidget *window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+    gtk_window_set_title(GTK_WINDOW(window), "Project Manual");
+    gtk_window_set_default_size(GTK_WINDOW(window), 600, 400);
+    gtk_window_set_modal(GTK_WINDOW(window), TRUE);
+    gtk_window_set_transient_for(GTK_WINDOW(window), GTK_WINDOW(user_data)); // Optional: link to parent
+
+    // Create a vertical box layout
+    GtkWidget *vbox = gtk_box_new(GTK_ORIENTATION_VERTICAL, 5);
+
+    // Scrolled text view
+    GtkWidget *scrolled_window = gtk_scrolled_window_new(NULL, NULL);
+    GtkWidget *text_view = gtk_text_view_new();
+    gtk_text_view_set_editable(GTK_TEXT_VIEW(text_view), FALSE);
+    gtk_container_add(GTK_CONTAINER(scrolled_window), text_view);
+    gtk_box_pack_start(GTK_BOX(vbox), scrolled_window, TRUE, TRUE, 0);
+
+    // Load manual content
+    GtkTextBuffer *buffer = gtk_text_view_get_buffer(GTK_TEXT_VIEW(text_view));
+    gchar *contents = NULL;
+    gsize length;
+    GError *error = NULL;
+    if (g_file_get_contents("manual.txt", &contents, &length, &error)) {
+        gtk_text_buffer_set_text(buffer, contents, -1);
+        g_free(contents);
+    } else {
+        gtk_text_buffer_set_text(buffer, "Could not load manual.txt", -1);
+    }
+
+    // Close button
+    GtkWidget *close_button = gtk_button_new_with_label("Close");
+    gtk_box_pack_start(GTK_BOX(vbox), close_button, FALSE, FALSE, 5);
+    g_signal_connect(close_button, "clicked", G_CALLBACK(on_manual_close_clicked), window);
+
+    gtk_container_add(GTK_CONTAINER(window), vbox);
+    gtk_widget_show_all(window);
+}
 void on_chmod_clicked(GtkButton *button, gpointer user_data) {
     GtkWidget *label = get_selected_file();
     if (!label) return;
@@ -220,10 +261,16 @@ int main(int argc, char *argv[]) {
     GtkWidget *create_dir_btn = gtk_button_new_with_label("Create Directory");
     g_signal_connect(create_dir_btn, "clicked", G_CALLBACK(on_create_dir_clicked), NULL);
     gtk_box_pack_start(GTK_BOX(hbox), create_dir_btn, FALSE, FALSE, 0);
+	
 
     GtkWidget *delete_btn = gtk_button_new_with_label("Delete");
     g_signal_connect(delete_btn, "clicked", G_CALLBACK(on_delete_clicked), NULL);
     gtk_box_pack_start(GTK_BOX(hbox), delete_btn, FALSE, FALSE, 0);
+
+
+    GtkWidget *man_btn = gtk_button_new_with_label("Man");
+    g_signal_connect(man_btn, "clicked", G_CALLBACK(on_man_clicked), NULL);
+    gtk_box_pack_start(GTK_BOX(hbox), man_btn, FALSE,FALSE,0);
 
     GtkWidget *chmod_btn = gtk_button_new_with_label("Change Permissions");
     g_signal_connect(chmod_btn, "clicked", G_CALLBACK(on_chmod_clicked), NULL);
