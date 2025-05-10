@@ -1,1 +1,111 @@
-## This manual of File Manager Project 
+# C File Manager User Manual
+
+## Overview
+
+The C File Manager is a lightweight graphical file management application built using GTK. It provides a simple interface for navigating directories and performing basic file operations.
+
+## Getting Started
+
+### Prerequisites
+
+- Linux/Unix-based operating system
+- GTK 3 development libraries
+- GCC compiler
+- Make build system
+
+### Installation
+
+1. Clone the repository:
+   ```
+   git clone https://github.com/Team-Roxy-Hrd/OS.git
+   ```
+
+2. Navigate to the project directory:
+   ```
+   cd OS/fileManager
+   ```
+
+3. Compile the project:
+   ```
+   make
+   ```
+
+4. Run the application:
+   ```
+   ./fileManager
+   ```
+
+## User Interface
+
+The File Manager provides a simple interface with the following elements:
+
+- A file/directory listing area showing contents of the current directory
+- Navigation buttons: "Back", "Refresh"
+- File operation buttons: "Create File", "Create Directory", "Delete"
+- Help button: "Man"
+- Close button: "X" (to exit the application)
+
+## Features
+
+### Navigation
+
+- **Refresh Button**: Updates the file listing to show current directory contents
+- **Back Button**: Returns to the parent directory
+
+### File Operations
+
+- **Create File**: Creates a new empty file in the current directory
+  1. Click the "Create File" button
+  2. Enter the desired filename in the dialog
+  3. Click "OK" to create the file
+
+- **Create Directory**: Creates a new directory in the current directory
+  1. Click the "Create Directory" button
+  2. Enter the desired directory name in the dialog
+  3. Click "OK" to create the directory
+
+- **Delete**: Deletes the selected file or directory
+  1. Select a file or directory in the listing
+  2. Click the "Delete" button
+  3. Confirm deletion in the dialog
+
+### Help
+
+- **Man Button**: Displays the manual/help information for using the application
+
+### Exiting the Application
+
+- **X Button**: Closes the application and exits
+
+## Keyboard Shortcuts
+
+- **F5**: Refresh the current directory listing
+- **Backspace**: Navigate to parent directory
+- **Delete**: Delete selected file(s)
+
+## Troubleshooting
+
+### Common Issues
+
+1. **Application fails to start:**
+   - Ensure GTK libraries are properly installed
+   - Check for compile errors during the build process
+
+2. **Cannot create files or directories:**
+   - Verify you have write permissions in the current directory
+
+3. **File listing appears empty:**
+   - Use the "Refresh" button to update the view
+   - Check if the directory actually contains files
+
+## Contributing
+
+Contributions to the C File Manager project are welcome. Please feel free to submit pull requests or open issues on GitHub.
+
+## License
+
+This project is licensed under the terms specified in the repository.
+
+---
+
+© Team-Roxy-Hrd | https://github.com/Team-Roxy-Hrd/OS

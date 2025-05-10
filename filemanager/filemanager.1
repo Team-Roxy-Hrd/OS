@@ -1,0 +1,86 @@
+.TH FILEMANAGER 1 "May 2025" "version 1.0" "User Commands"
+.SH NAME
+filemanager \- GTK-based file management utility
+.SH SYNOPSIS
+.B filemanager
+[\fIOPTIONS\fR]
+.SH DESCRIPTION
+.B filemanager
+is a lightweight graphical file management application that provides an interface for navigating directories and performing basic file operations.
+.PP
+The application presents a window with file and directory listings for the current directory and buttons to perform various operations.
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Display help information and exit.
+.TP
+.B \-v, \-\-version
+Display version information and exit.
+.SH FEATURES
+.SS Navigation
+.TP
+.B Refresh
+Updates the file listing to display the current directory contents.
+.TP
+.B Back
+Returns to the parent directory.
+.SS File Operations
+.TP
+.B Create File
+Creates a new empty file in the current directory. You will be prompted to enter a filename.
+.TP
+.B Create Directory
+Creates a new directory in the current directory. You will be prompted to enter a directory name.
+.TP
+.B Delete
+Deletes the selected file or directory. You will be asked to confirm the deletion.
+.SH INTERFACE
+The main interface consists of:
+.PP
+.IP \[bu] 2
+A file/directory listing showing contents of the current directory
+.IP \[bu] 2
+Navigation buttons: "Back", "Refresh"
+.IP \[bu] 2
+File operation buttons: "Create File", "Create Directory", "Delete"
+.IP \[bu] 2
+Help button: "Man"
+.IP \[bu] 2
+Close button: "X" (to exit the application)
+.SH KEYBOARD SHORTCUTS
+.TP
+.B F5
+Refresh the current directory listing
+.TP
+.B Backspace
+Navigate to parent directory
+.TP
+.B Delete
+Delete selected file(s)
+.SH EXIT STATUS
+.TP
+.B 0
+Program terminated successfully.
+.TP
+.B 1
+Program terminated with an error.
+.SH FILES
+.TP
+.I ~/.config/filemanager/
+Configuration directory for filemanager.
+.SH EXAMPLES
+.TP
+Launch the file manager:
+.B filemanager
+.SH BUGS
+Report bugs to: https://github.com/Team-Roxy-Hrd/OS/issues
+.SH AUTHORS
+Team Roxy (https://github.com/Team-Roxy-Hrd)
+.SH COPYRIGHT
+Copyright © 2025 Team Roxy.
+.PP
+License information can be found in the repository.
+.SH SEE ALSO
+.BR nautilus (1),
+.BR thunar (1),
+.BR pcmanfm (1)

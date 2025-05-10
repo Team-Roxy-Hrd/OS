@@ -283,6 +283,10 @@ int main(int argc, char *argv[]) {
     list_box = gtk_list_box_new();
     gtk_box_pack_start(GTK_BOX(vbox), list_box, TRUE, TRUE, 0);
     g_signal_connect(list_box, "row-activated", G_CALLBACK(on_row_activated), NULL);
+	
+    GtkWidget *close_btn = gtk_button_new_with_label("X");
+    g_signal_connect(close_btn, "clicked", G_CALLBACK(gtk_main_quit), NULL);
+    gtk_box_pack_start(GTK_BOX(hbox), close_btn, FALSE, FALSE, 0);
 
     list_directory(current_dir);
 
